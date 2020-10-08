@@ -14,37 +14,22 @@ namespace Calculadora
     {
         double numero1, numero2, respuesta;
         bool banderaNumero1 = false;
-        bool banderaNumero2 = false;
         bool banderaOperacion = false;
         string operacionSeleccionada;
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        private double Operacion( string operacion )
-        {
-            double resultado = 0.0;
-            switch (operacion)
-            {
-                case "suma":
-                    resultado = numero1 + numero2;
-                    break;
-            }
-
-            return resultado;
-        }
-
         private void btn0_Click(object sender, EventArgs e)
         {
             tbPantalla.Text = tbPantalla.Text + "0";
-            
         }
 
         private void btn1_Click(object sender, EventArgs e)
         {
             tbPantalla.Text = tbPantalla.Text + "1";
-            //banderaNumero1 = true;
         }
 
         private void btn2_Click(object sender, EventArgs e)
@@ -90,6 +75,7 @@ namespace Calculadora
 
                 respuesta = Operacion(operacionSeleccionada);
                 tbPantalla.Text = respuesta.ToString();
+                limpiar();
             }
         }
 
@@ -116,11 +102,23 @@ namespace Calculadora
             }
         }
 
+        private double Operacion(string operacion)
+        {
+            double resultado = 0.0;
+            switch (operacion)
+            {
+                case "suma":
+                    resultado = numero1 + numero2;
+                    break;
+            }
+
+            return resultado;
+        }
+
         private void limpiar()
         {
             banderaNumero1 = false;
             banderaOperacion = false;
-            tbPantalla.Text = "";
         }
     }
 }
